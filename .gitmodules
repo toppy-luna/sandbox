@@ -1,0 +1,3 @@
+[submodule "C++/helloworld/third_party/gtest"]
+	path = C++/helloworld/third_party/gtest
+	url = git@github.com:google/googletest.git
