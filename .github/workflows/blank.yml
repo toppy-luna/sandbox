@@ -9,11 +9,16 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: label change test1
-      run: | 
-        pwd
-        ls
-    - name: label change test2
+    - name: build
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        cd C++/helloworld/third_party/gtest/
+        git submodule update -i
+        cd ../../
+        mkdir build/
+        cd build/
+        cmake ..
+        make
+    - name: test
+      run: |
+        pwd
+        ./test_calc
