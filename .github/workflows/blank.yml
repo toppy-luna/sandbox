@@ -12,8 +12,10 @@ jobs:
     - name: build
       run: |
         cd C++/helloworld/
-        docker build --tag ${USER}/test_c .
+        ./build.sh
+# too late... because docker re-build without cache.
+#        docker build --tag ${USER}/test_c .
     - name: test
       run: |
-        pwd
-        docker run --rm ${USER}/test_c /workspace/helloworld/build/test_calc
+         C++/helloworld/build/test_calc
+#        docker run --rm ${USER}/test_c /workspace/helloworld/build/test_calc
