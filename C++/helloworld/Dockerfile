@@ -5,12 +5,13 @@ RUN apt update \
   build-essential \
   cmake \
   vim \
-  wget \
   && rm -rf /var/lib/apt/lists/*
 
 COPY . /workspace/helloworld
-RUN cd /workspace/helloworld/ \
-  && ./build.sh
+RUN mkdir /workspace/helloworld/build \
+  && cd /workspace/helloworld/build \
+  && cmake .. \
+  && make
 
 WORKDIR /workspace/helloworld/build
 
