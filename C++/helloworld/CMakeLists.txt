@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(helloworld_cpp)
 
-add_subdirectory(third_party/gtest/googletest)
+find_package(GTest REQUIRED)
 
 add_executable(${PROJECT_NAME}
   src/main.cpp)
@@ -13,8 +13,8 @@ add_executable(test_calc
   test/test_calc.cpp
   src/calc.cpp)
 target_link_libraries(test_calc
-  gtest_main
+  ${GTEST_LIBRARIES}
   pthread)
 target_include_directories(test_calc PUBLIC
   include
-  third_party/gtest/googletest/include)
+  ${GTEST_INCLUDE_DIRS})
