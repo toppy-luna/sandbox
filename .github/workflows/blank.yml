@@ -9,9 +9,13 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
+    - name: build
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        cd C++/helloworld/
+        ./build.sh
+# too late... because docker re-build without cache.
+#        docker build --tag ${USER}/test_c .
+    - name: test
+      run: |
+         C++/helloworld/build/test_calc
+#        docker run --rm ${USER}/test_c /workspace/helloworld/build/test_calc
