@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
       with:
         submodules: true
     - name: build
